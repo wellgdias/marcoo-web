@@ -29,12 +29,12 @@
   border-radius: 15%;
   border: 1px solid;
   padding: 2px;
-  background-color: #fff;
+  background-color: #3ea4df;
   border-color: #dfdfdf;
 }
 
 .button__icon.icon--delete {
-  color: #ca5452;
+  color: #3ea4df;
   font-size: 20px;
   padding: 2px;
 }
@@ -45,7 +45,7 @@
   border-radius: 15%;
   border: 1px solid;
   padding: 2px;
-  background-color: #fff;
+  background-color: #3ea4df;
   border-color: #dfdfdf;
   opacity: 0.5;
   cursor: default;  

@@ -49,8 +49,8 @@
 }
 
 .product__size.is-selected {
-  background-color: #ffc0cb;
-  border-color: #ffb6c1;
+  background-color: #68b5e2;
+  border-color: #68b5e2;
   font-weight: bold;
 }
 
@@ -63,7 +63,7 @@
 
 .product__size:hover,
 .product__cart:hover {
-  border-color: #db7093;
+  border-color: #68b5e2;
 }
 
 .product__cart {
@@ -74,8 +74,8 @@
   font-size: 20px;
   padding: 2px 0;
   font-weight: 700;
-  background-color: #db7093;
-  border-color: #ffc0cb;
+  background-color: #3ea4df;
+  border-color: #68b5e2;
   color: #fff;
 }
 

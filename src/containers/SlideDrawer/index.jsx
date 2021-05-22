@@ -34,7 +34,7 @@ export default function SlideDrawer() {
           </Button>
 
           {drawer.receiver === "cart" ? (
-            <h3 className="drawer__name">{`Sacola (${cart.amount})`}</h3>
+            <h3 className="drawer__name">{`Carrinho (${cart.amount})`}</h3>
           ) : (
             <h3 className="drawer__name">Buscar Produtos</h3>
           )}

@@ -100,7 +100,7 @@ export default function Product() {
                   className="product__cart"
                   onClick={() => handleClickAddCart(id, selectedSize)}
                 >
-                  Adicionar à sacola
+                  Adicionar ao carrinho
                 </Button>
               </div>
             </div>

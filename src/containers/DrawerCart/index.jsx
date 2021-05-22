@@ -13,7 +13,7 @@ export default function DrawerCart() {
       <div className="cart__products">
         {cart.products.length === 0 ? (
           <p className="products__empty">
-            Nenhum produto adicionado à sacola :(
+            Nenhum produto adicionado ao carrinho :(
           </p>
         ) : (
           cart.products.map((product) => (

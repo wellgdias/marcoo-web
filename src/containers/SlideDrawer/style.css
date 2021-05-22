@@ -29,8 +29,9 @@
 .drawer__header {
   display: flex;
   align-items: center;
-  background: #ffc0cb;
+  background: #3ea4df;
   padding: 2%;
+  color: #f9f9f9;
 }
 
 .drawer__name {
@@ -51,6 +52,6 @@
   padding: 2%;
   height: 5%;
   font-weight: bold;
-  background-color: #db7093;
+  background-color: #3ea4df;
   color: #f9f9f9;
 }
