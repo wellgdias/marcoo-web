@@ -1,0 +1,46 @@
+.topbar {
+  background: #3ea4df;
+  display: block;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.topbar__default {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.topbar__logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 24px;
+  color: #fff;
+}
+
+.topbar__logo:hover {
+  color: #d4eaf6;
+}
+
+.topbar__logo svg {
+  width: 30px;
+  fill: #fff;
+}
+
+.topbar__logo svg:hover,
+.topbar__logo:hover {
+  fill: #d4eaf6;
+}
+
+.topbar__menu {
+  display: flex;
+  align-items: center;
+}
