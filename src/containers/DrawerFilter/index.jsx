@@ -43,12 +43,12 @@ export default function DrawerFilter() {
         ) : (
           filterProducts.map((product) => (
             <Link
-              key={product.id}
+              key={product._id}
               to={`/produto/${createPath(product.name)}`}
-              onClick={() => handleSetProductId(product.id)}
+              onClick={() => handleSetProductId(product._id)}
             >
               <ProductDrawer
-                key={product.id}
+                key={product._id}
                 product={product}
                 drawer="filter"
               />

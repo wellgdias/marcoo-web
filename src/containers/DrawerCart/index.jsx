@@ -17,7 +17,7 @@ export default function DrawerCart() {
           </p>
         ) : (
           cart.products.map((product) => (
-            <ProductDrawer key={product.id} product={product} />
+            <ProductDrawer key={product._id} product={product} />
           ))
         )}
       </div>

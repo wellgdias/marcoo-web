@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -13,7 +13,6 @@ import { setProductCart } from "../../actions";
 import "./style.css";
 
 export default function Product() {
-  const [selectedSize, setSelectedSize] = useState();
   
   const { productDetail } = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -31,9 +30,8 @@ export default function Product() {
 
   
 
-  function handleClickAddCart(id, size) {    
-    dispatch(setProductCart(id, size));
-    setSelectedSize();   
+  function handleClickAddCart(id) {    
+    dispatch(setProductCart(id));    
   }
 
   return (
@@ -59,7 +57,7 @@ export default function Product() {
               <div className="product__add">
                 <Button
                   className="product__cart"
-                  onClick={() => handleClickAddCart(_id, selectedSize)}
+                  onClick={() => handleClickAddCart(_id)}
                 >
                   Adicionar ao carrinho
                 </Button>

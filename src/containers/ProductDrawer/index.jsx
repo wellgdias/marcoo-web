@@ -46,14 +46,14 @@ export default function ProductFilter(props) {
               <div className="details__amount">
                 <Button
                   className={isMinimumAmount(props.product.amount)}
-                  onClick={() => handleOnClickAmount(props.product.id, "minus")}
+                  onClick={() => handleOnClickAmount(props.product._id, "minus")}
                 >
                   <FiMinus />
                 </Button>
                 <span className="amount">{props.product.amount}</span>
                 <Button
                   className="button__icon icon--plus"
-                  onClick={() => handleOnClickAmount(props.product.id, "plus")}
+                  onClick={() => handleOnClickAmount(props.product._id, "plus")}
                 >
                   <FiPlus />
                 </Button>
@@ -61,7 +61,7 @@ export default function ProductFilter(props) {
               <div className="details__delete">
                 <Button
                   className="button__icon icon--delete"
-                  onClick={() => handleOnClickDelete(props.product.id)}
+                  onClick={() => handleOnClickDelete(props.product._id)}
                 >
                   <FiTrash2 />
                 </Button>

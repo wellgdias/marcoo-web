@@ -37,11 +37,10 @@ export const setProductInfo = (id) => {
   };
 };
 
-export const setProductCart = (id, size) => {
+export const setProductCart = (id) => {
   return {
     type: SET_PRODUCT_CART,
-    size: size,
-    id: id,
+    _id: id,
   };
 };
 
@@ -62,7 +61,7 @@ export const setValueFilter = (value) => {
 export const setAmountProduct = (id, operation) => {
   return {
     type: SET_AMOUNT_PRODUCT,
-    id: id,
+    _id: id,
     operation: operation,
   };
 };
@@ -70,6 +69,6 @@ export const setAmountProduct = (id, operation) => {
 export const deleteProductcart = (id) => {
   return {
     type: DELETE_PRODUCT_CART,
-    id: id,
+    _id: id,
   };
 };

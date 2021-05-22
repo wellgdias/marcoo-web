@@ -72,31 +72,25 @@ export function Reducer(state = initialState, action) {
 
     case SET_PRODUCT_CART: {
       const productsCart = state.cart.products.map((product) => {
-        if (
-          product.info.id === action.id &&
-          product.selectedSize === action.size
-        ) {
+        if (product.info._id === action._id) {
           product.amount += 1;
           product.total =
-            parseFloat(product.info.actual_price.replace("R$ ", "")) *
+            parseFloat(product.info.prices[0].price) *
             product.amount;
         }
         return product;
       });
 
       const hasProduct = state.cart.products.filter((product) => {
-        return (
-          product.info.id === action.id && product.selectedSize === action.size
-        );
+        return product.info._id === action._id;
       });
 
       if (hasProduct.length === 0) {
         const product = {
-          id: action.id + action.size,
-          info: state.productDetail,
-          selectedSize: action.size,
+          _id: action._id,
+          info: state.productDetail,          
           total: parseFloat(
-            state.productDetail.actual_price.replace("R$ ", "")
+            state.productDetail.prices[0].price
           ),
           amount: 1,
         };
@@ -144,13 +138,13 @@ export function Reducer(state = initialState, action) {
 
     case SET_AMOUNT_PRODUCT: {
       const productsCart = state.cart.products.map((product) => {
-        if (product.id === action.id) {
+        if (product._id === action._id) {
           action.operation === "plus"
             ? (product.amount += 1)
             : (product.amount -= 1);
 
           product.total =
-            parseFloat(product.info.actual_price.replace("R$ ", "")) *
+            parseFloat(product.info.prices[0].price) *
             product.amount;
         }
         return product;
@@ -171,7 +165,7 @@ export function Reducer(state = initialState, action) {
 
     case DELETE_PRODUCT_CART: {
       const productsCart = state.cart.products.filter(
-        (product) => product.id !== action.id
+        (product) => product._id !== action._id
       );
 
       const amountCart = sumCartField(productsCart, "amount");
