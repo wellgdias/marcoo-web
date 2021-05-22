@@ -66,10 +66,15 @@
   border-color: #68b5e2;
 }
 
+.product__add {
+  display: flex;
+  justify-content: center;
+}
+
 .product__cart {
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 150px;
   margin: 5px 0;
   font-size: 20px;
   padding: 2px 0;

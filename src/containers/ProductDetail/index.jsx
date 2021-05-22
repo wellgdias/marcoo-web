@@ -59,7 +59,7 @@ export default function Product() {
                   className="product__cart"
                   onClick={() => handleClickAddCart(_id)}
                 >
-                  Adicionar ao carrinho
+                  Comprar
                 </Button>
               </div>
             </div>
