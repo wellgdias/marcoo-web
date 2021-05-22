@@ -17,10 +17,12 @@
 
 .button__icon.icon--search {
   margin-right: 20px;
+  font-size: 25px;
 }
 
 .button__icon.icon--cart {
   margin-right: 10px;
+  font-size: 25px;
 }
 
 .button__icon.icon--minus,
@@ -56,8 +58,7 @@
 
 .icon__counter {
   overflow: hidden;
-  position: absolute;
-  
+  position: absolute;  
   right: -12px;
   height: 18px;
   width: 18px;

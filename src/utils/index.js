@@ -3,6 +3,7 @@ export const createPath = (name) => {
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/ /g, "-")
+    .replace('%', "-")
     .toLowerCase();
 };
 

@@ -20,7 +20,7 @@ export default function Catalog() {
             <p className="catalog__count">{products.length} itens</p>
             <div className="catalog__list">
               {products?.map((product) => (
-                <Product key={product.id} product={product} />
+                <Product key={product._id} product={product} />
               ))}
             </div>
           </Container>

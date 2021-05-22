@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://api.jsonbin.io/b/',
+  baseURL: 'https://marcoo-bff.herokuapp.com/v1',
 });
 
 export default api;

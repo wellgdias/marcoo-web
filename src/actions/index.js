@@ -14,19 +14,13 @@ import api from '../services';
 
 export const loadCatalog = () => (dispatch) => {
   dispatch({ type: LOAD_CATALOG_LOADING });
-
-  let id = 0;
-  api.get('/5eff7f2bbb5fbb1d25638066').then(
-    (response) =>
+    
+  api.get('/supermarkets/18095050/products').then(
+    (response) =>    
       dispatch({
         type: LOAD_CATALOG_SUCCESS,
-        data: response.data
-          .map((data) => {
-            id = id + 1;
-            data.id = id;
-            return data;
-          })
-          .filter((product) => product.name && product.style),
+        data: response.data.data,
+        
       }),
     (error) =>
       dispatch({

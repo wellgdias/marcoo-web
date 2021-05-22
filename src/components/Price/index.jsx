@@ -19,7 +19,7 @@ export default function Price({ regular, atual, installments }) {
       {regular === atual ? (
         <>
           <span className={`${product__price} product__price--to`}>
-            {regular}
+            R$ {regular}
           </span>
           {installments && (
             <span className="product__installments">em até {installments}</span>

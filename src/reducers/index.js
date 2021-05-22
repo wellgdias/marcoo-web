@@ -62,7 +62,7 @@ export function Reducer(state = initialState, action) {
     }
     case SET_PRODUCT_INFO: {
       const product = state.catalog.products.filter(
-        (product) => product.id === action.payload
+        (product) => product._id === action.payload
       );
       return {
         ...state,

@@ -13,12 +13,10 @@ import "./style.css";
 
 export default function ProductCatalog({ product }) {
   const {
-    id,
-    discount_percentage,
+    _id,    
     image,
-    name,
-    regular_price,
-    actual_price,
+    name,    
+    prices,    
   } = product;
 
   const dispatch = useDispatch();
@@ -30,11 +28,11 @@ export default function ProductCatalog({ product }) {
 
   return (
     <div className="product__info" data-testid="product">
-      <Link to={`/produto/${path}`} onClick={() => handleSetProductId(id)}>
-        <Image image={image} name={name} discount={discount_percentage} />
+      <Link to={`/produto/${path}`} onClick={() => handleSetProductId(_id)}>
+        <Image image={image} name={name}/>
       </Link>
       <ProductName>{name}</ProductName>
-      <Price regular={regular_price} atual={actual_price} />
+      <Price regular={prices[0].price} atual={prices[0].price} />
     </div>
   );
 }
