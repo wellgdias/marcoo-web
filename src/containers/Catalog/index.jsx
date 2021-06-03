@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Spinner from 'react-spinner-material';
 
 import Product from "../ProductCatalog";
 import Container from "../../components/Container";
@@ -13,8 +14,11 @@ export default function Catalog() {
   return (    
     <section className="catalog" data-testid="catalog">    
       {loading ? (
-        <Container>
-          <h1>Aguarde um momento enquanto procuramos pelos melhores preços...</h1>
+        <Container >
+          <div className="catalog__loading">            
+            <Spinner radius={100} color={"#68b5e2"} stroke={4} visible={true} />
+            <span className="loading__text">Aguarde um momento enquanto procuramos pelos melhores preços...</span>
+          </div>
         </Container>
       ) : !error ? (
         <Container>
