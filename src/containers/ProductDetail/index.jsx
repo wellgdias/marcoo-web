@@ -46,12 +46,13 @@ export default function Product() {
               <ProductName>{name}</ProductName>
 
 
-              <div className="product__price">
-                <span className="supermarket__name">{prices[0].name}</span>
-                <Price atual={currency.format(prices[0].price)} />
-              </div>
+              <div className="product__details">
+                <div className="product__price">
+                  <span className="supermarket__name">{prices[0].name}</span>
+                  <Price atual={currency.format(prices[0].price)} />
+                </div>
 
-              <div className="product__add">
+                <div className="product__add">
                 <Button
                   className="product__cart"
                   onClick={() => handleClickAddCart(_id)}
@@ -59,6 +60,9 @@ export default function Product() {
                   Comprar
                 </Button>
               </div>
+              </div>
+
+              
 
               <div className="supermarket__prices">
                 <span className="supermarket__text">Preço do produtos em outros supermercados:</span>                      

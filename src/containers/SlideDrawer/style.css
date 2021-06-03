@@ -45,13 +45,39 @@
 }
 
 .drawer__footer {
+  display: flex;
   position: fixed;
+  justify-content: space-between;
+  align-items: center;
   left: 0;
   bottom: 0;
   width: 100%;
   padding: 2%;
   height: 5%;
-  font-weight: bold;
-  background-color: #3ea4df;
-  color: #f9f9f9;
+  background-color: #3ea4df;  
+}
+
+.footer__total {
+  font-weight: bold;  
+  color: #f9f9f9;  
+}
+
+.cart__checkout{
+  border-radius: 8px;
+  border: 1px solid;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  height: 25px;   
+  font-weight: 700;
+  background-color: #35bc84;
+  border-color: #35bc84;
+  color: #fff;
+}
+
+.cart__checkout:hover {
+  opacity: 0.8;
+
 }
