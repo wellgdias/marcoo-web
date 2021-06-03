@@ -7,7 +7,7 @@ export const createPath = (name) => {
     .toLowerCase();
 };
 
-export const numberFormatter = new Intl.NumberFormat([], {
+export const currency = new Intl.NumberFormat([], {
   style: "currency",
   currency: "BRL",
 });

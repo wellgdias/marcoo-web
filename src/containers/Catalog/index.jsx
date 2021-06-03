@@ -8,24 +8,29 @@ import "./style.css";
 
 export default function Catalog() {
   const { catalog } = useSelector((state) => state);
-  const { products, loading } = catalog;
+  const { products, loading, error } = catalog;
 
-  return (
-    <>
+  return (    
+    <section className="catalog" data-testid="catalog">    
       {loading ? (
-        <h1>Carregando...</h1>
+        <Container>
+          <h1>Aguarde um momento enquanto procuramos pelos melhores preços...</h1>
+        </Container>
+      ) : !error ? (
+        <Container>
+          <p className="catalog__count">{products.length} itens</p>
+          <div className="catalog__list">
+            {products?.map((product) => (
+              <Product key={product._id} product={product} />
+            ))}
+          </div>
+        </Container>
       ) : (
-        <section className="catalog" data-testid="catalog">
-          <Container>
-            <p className="catalog__count">{products.length} itens</p>
-            <div className="catalog__list">
-              {products?.map((product) => (
-                <Product key={product._id} product={product} />
-              ))}
-            </div>
-          </Container>
-        </section>
-      )}
-    </>
+        <Container>
+         <h1>Erro ao carregar os produtos, tente novamente...</h1>
+        </Container>
+      )}     
+    </section>
+   
   );
 }

@@ -20,11 +20,29 @@
   padding: 5px;
 }
 
-.product__choose {
+.product__price{
+  display: flex;  
+  padding: 5px ;
+}
+
+.supermarket__prices{
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.supermarket__text{  
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 5px;
+  color: #6e6e6e;
+}
+
+.supermarket__info{
   font-size: 16px;
   font-weight: bold;
-  padding: 5px 0;
-  color: #a7a7a7;
+  padding: 2px 15px;
+  color: #68b5e2;
 }
 
 .product__warning {

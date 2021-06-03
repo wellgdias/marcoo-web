@@ -26,8 +26,9 @@
 }
 
 .product__price--product {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold;
+  color: #3ea4df;
 }
 
 .price__from--home,

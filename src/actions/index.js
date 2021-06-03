@@ -12,22 +12,33 @@ import {
 
 import api from '../services';
 
-export const loadCatalog = () => (dispatch) => {
+export const loadCatalog = (teste) => async (dispatch) => {
   dispatch({ type: LOAD_CATALOG_LOADING });
-    
-  api.get('/supermarkets/18095050/products').then(
-    (response) =>    
-      dispatch({
-        type: LOAD_CATALOG_SUCCESS,
-        data: response.data.data,
-        
-      }),
-    (error) =>
-      dispatch({
-        type: LOAD_CATALOG_ERROR,
-        error: error.message || 'Unexpected Error!!!',
-      })
-  );
+  try {    
+    const response = await api.get('/v1/supermarkets/18095050/products');
+    dispatch({
+      type: LOAD_CATALOG_SUCCESS,
+      data: response.data.data,      
+    })
+  } catch (error) {
+    dispatch({
+      type: LOAD_CATALOG_ERROR,
+      error: error.message || 'Unexpected Error!!!',
+    })
+  }
+  
+  // api.get('/supermarkets/18095050/products').then(
+  //   (response) =>    
+  //   dispatch({
+  //     type: LOAD_CATALOG_SUCCESS,
+  //     data: response.data.data,      
+  //   }),
+  //   (error) =>
+  //     dispatch({
+  //       type: LOAD_CATALOG_ERROR,
+  //       error: error.message || 'Unexpected Error!!!',
+  //     })
+  // );
 };
 
 export const setProductInfo = (id) => {

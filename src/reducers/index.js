@@ -37,8 +37,7 @@ export function Reducer(state = initialState, action) {
       return {
         ...state,
         catalog: {
-          loading: true,
-          error: "",
+          loading: true,              
         },
       };
     }
@@ -47,7 +46,7 @@ export function Reducer(state = initialState, action) {
         ...state,
         catalog: {
           products: action.data,
-          loading: false,
+          loading: false,          
         },
       };
     }
@@ -55,7 +54,7 @@ export function Reducer(state = initialState, action) {
       return {
         ...state,
         catalog: {
-          loading: false,
+          loading: false,    
           error: action.error,
         },
       };

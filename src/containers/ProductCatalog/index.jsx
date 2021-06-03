@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
+
 import Image from "../../components/Image";
 import Price from "../../components/Price";
 import ProductName from "../../components/Name";
 
 import { setProductInfo } from "../../actions";
-import { createPath } from "../../utils";
+import { createPath, currency } from "../../utils";
 
 import "./style.css";
 
@@ -32,7 +33,10 @@ export default function ProductCatalog({ product }) {
         <Image image={image} name={name}/>
       </Link>
       <ProductName>{name}</ProductName>
-      <Price regular={prices[0].price} atual={prices[0].price} />
+      <div className="product__infoprice">
+        <span className="supermarket__name">{prices[0].name}</span>
+        <Price atual={currency.format(prices[0].price)} />
+      </div>
     </div>
   );
 }

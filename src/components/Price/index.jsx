@@ -2,7 +2,7 @@ import React from "react";
 
 import "./style.css";
 
-export default function Price({ regular, atual, installments }) {
+export default function Price({ atual}) {
   const pathname = window.location.pathname;
 
   const product__pricing =
@@ -16,26 +16,9 @@ export default function Price({ regular, atual, installments }) {
 
   return (
     <div className={product__pricing} data-testid="price">
-      {regular === atual ? (
-        <>
-          <span className={`${product__price} product__price--to`}>
-            R$ {regular}
-          </span>
-          {installments && (
-            <span className="product__installments">em até {installments}</span>
-          )}
-        </>
-      ) : (
-        <>
-          <span className={`${product__price} ${price__from}`}>{regular}</span>
-          <span className={`${product__price} product__price--to`}>
-            {atual}
-          </span>
-          {installments && (
-            <span className="product__installments">em até {installments}</span>
-          )}
-        </>
-      )}
+      <span className={`${product__price} product__price--to`}>
+        {atual}
+      </span>
     </div>
   );
 }

@@ -10,3 +10,22 @@
 .product__info:hover {
   opacity: 0.6;
 }
+
+.product__infoprice{
+  display: flex;
+  justify-content: center;
+}
+
+.supermarket__name {
+  border: 0.15rem solid #35bc84;
+  background-color: #35bc84;
+  border-radius: 0.5rem;
+  padding: 0 0.2rem;
+  margin: 0 0.2rem;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
+ 
+}
