@@ -25,20 +25,7 @@ export const loadCatalog = (teste) => async (dispatch) => {
       type: LOAD_CATALOG_ERROR,
       error: error.message || 'Unexpected Error!!!',
     })
-  }
-  
-  // api.get('/supermarkets/18095050/products').then(
-  //   (response) =>    
-  //   dispatch({
-  //     type: LOAD_CATALOG_SUCCESS,
-  //     data: response.data.data,      
-  //   }),
-  //   (error) =>
-  //     dispatch({
-  //       type: LOAD_CATALOG_ERROR,
-  //       error: error.message || 'Unexpected Error!!!',
-  //     })
-  // );
+  } 
 };
 
 export const setProductInfo = (id) => {

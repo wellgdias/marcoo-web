@@ -9,10 +9,7 @@ export default function Price({ atual}) {
     pathname === "/" ? "product__pricing--home" : "product__pricing--product";
 
   const product__price =
-    pathname === "/" ? "product__price--home" : "product__price--product";
-
-  const price__from =
-    pathname === "/" ? "price__from--home" : "price__frome--product";
+    pathname === "/" ? "product__price--home" : "product__price--product";  
 
   return (
     <div className={product__pricing} data-testid="price">
