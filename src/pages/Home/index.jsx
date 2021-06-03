@@ -1,11 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import Catalog from "../../containers/Catalog";
+import Modal from "../../containers/Modal";
 
 export default function Home() {
-  return (
+  const { catalog } = useSelector((state) => state);
+  console.log("passou aqui!!!");
+  return (    
     <div data-testid="home">
-      <Catalog />
+      { catalog.modal ? (
+        <Modal /> ) : (
+        <Catalog /> )
+      }      
     </div>
   );
 }

@@ -1,23 +1,39 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import Spinner from 'react-spinner-material';
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+import Spinner  from 'react-spinner-material';
+import { FiRotateCw } from "react-icons/fi";
 
 import Product from "../ProductCatalog";
 import Container from "../../components/Container";
+
+import Button from "../../components/Button"
+
+import { setCepValue, setModalValue } from "../../actions";
 
 import "./style.css";
 
 export default function Catalog() {
   const { catalog } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const { products, loading, error } = catalog;
 
-  return (    
+
+  function handleRefreshOnClick() {
+    dispatch(setModalValue())
+    dispatch(setCepValue());
+    history.push("/")
+  };
+
+  return ( 
     <section className="catalog" data-testid="catalog">    
-      {loading ? (
+      { loading ? (
         <Container >
-          <div className="catalog__loading">            
+          <div className="catalog__info">            
             <Spinner radius={100} color={"#68b5e2"} stroke={4} visible={true} />
-            <span className="loading__text">Aguarde um momento enquanto procuramos pelos melhores preços...</span>
+            <span className="info__text">O Marcoo está procurando pelos melhores preços</span>
           </div>
         </Container>
       ) : !error ? (
@@ -30,11 +46,18 @@ export default function Catalog() {
           </div>
         </Container>
       ) : (
-        <Container>
-         <h1>Erro ao carregar os produtos, tente novamente...</h1>
+        <Container >
+          <div className="catalog__info">     
+            <Button 
+              className="button__icon icon--error"               
+              onClick={() => handleRefreshOnClick()}
+            >
+              <FiRotateCw />
+            </Button>  
+            <span className="info__text">Ops... tivemos um erro ao carregar os produtos, tente novamente...</span>
+          </div>
         </Container>
-      )}     
-    </section>
-   
+      )}   
+    </section>     
   );
 }

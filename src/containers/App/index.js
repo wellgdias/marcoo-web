@@ -12,12 +12,15 @@ import Routes from "../../routes/index";
 import "./style.css";
 
 export default function App() {
-  const { drawer } = useSelector((state) => state);
-  const dispatch = useDispatch();
+  const { drawer, cep } = useSelector((state) => state);
+  const dispatch = useDispatch(); 
+  console.log(cep);
 
   useEffect(() => {
-    dispatch(loadCatalog());
-  }, [dispatch]);
+    if (cep) {
+      dispatch(loadCatalog(cep));
+    }    
+  }, [cep, dispatch]);
 
   return (
     <div data-testid="app">

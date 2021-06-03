@@ -8,6 +8,8 @@ import {
   SET_VALUE_FILTER,
   SET_AMOUNT_PRODUCT,
   DELETE_PRODUCT_CART,
+  SET_CEP_VALUE,
+  SET_MODAL_VALUE,
 } from "../constants";
 
 import { sumCartField } from "../utils";
@@ -17,6 +19,7 @@ export const initialState = {
     products: [],
     loading: false,
     error: "",
+    modal: true,
   },
   productDetail: [],
   cart: {
@@ -29,6 +32,7 @@ export const initialState = {
     receiver: "",
     open: false,
   },
+  cep: "",
 };
 
 export function Reducer(state = initialState, action) {
@@ -37,7 +41,8 @@ export function Reducer(state = initialState, action) {
       return {
         ...state,
         catalog: {
-          loading: true,              
+          loading: true, 
+          modal: false,                      
         },
       };
     }
@@ -46,7 +51,8 @@ export function Reducer(state = initialState, action) {
         ...state,
         catalog: {
           products: action.data,
-          loading: false,          
+          loading: false, 
+          modal: false,          
         },
       };
     }
@@ -54,7 +60,8 @@ export function Reducer(state = initialState, action) {
       return {
         ...state,
         catalog: {
-          loading: false,    
+          loading: false,
+          modal: false, 
           error: action.error,
         },
       };
@@ -177,6 +184,25 @@ export function Reducer(state = initialState, action) {
           amount: amountCart,
           total: totalCart,
         },
+      };
+    }
+
+    case SET_CEP_VALUE: {
+      return {
+        ...state,
+        cep: action.cep,        
+      };
+    }
+
+    case SET_MODAL_VALUE: {
+      return {
+        ...state,
+        catalog: {
+          products: [],
+          loading: false,
+          error: "",
+          modal: true,
+        },        
       };
     }
 

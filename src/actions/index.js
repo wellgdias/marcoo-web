@@ -8,14 +8,17 @@ import {
   SET_VALUE_FILTER,
   SET_AMOUNT_PRODUCT,
   DELETE_PRODUCT_CART,
+  SET_CEP_VALUE,
+  SET_MODAL_VALUE,
 } from '../constants';
 
 import api from '../services';
 
-export const loadCatalog = (teste) => async (dispatch) => {
+export const loadCatalog = (cep) => async (dispatch) => {
   dispatch({ type: LOAD_CATALOG_LOADING });
   try {    
-    const response = await api.get('/v1/supermarkets/18095050/products');
+    const response = await api.get(`/v1/supermarkets/${cep}/products`);
+    
     dispatch({
       type: LOAD_CATALOG_SUCCESS,
       data: response.data.data,      
@@ -68,5 +71,18 @@ export const deleteProductcart = (id) => {
   return {
     type: DELETE_PRODUCT_CART,
     _id: id,
+  };
+};
+
+export const setCepValue = (value) => {
+  return {
+    type: SET_CEP_VALUE,
+    cep: value,
+  };
+};
+
+export const setModalValue = () => {
+  return {
+    type: SET_MODAL_VALUE    
   };
 };

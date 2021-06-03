@@ -20,6 +20,16 @@
   font-size: 25px;
 }
 
+.button__icon.cep--search {
+  color: #6e6e6e;
+}
+
+.button__icon.icon--error {
+  font-size: 100px;
+  color: #3ea4df;
+
+}
+
 .button__icon.icon--cart {
   margin-right: 10px;
   font-size: 25px;
