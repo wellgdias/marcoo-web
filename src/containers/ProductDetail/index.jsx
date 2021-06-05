@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { FiArrowLeft } from "react-icons/fi";
 
 import Image from "../../components/Image";
 import Price from "../../components/Price";
@@ -31,6 +32,10 @@ export default function Product() {
     dispatch(setProductCart(id));    
   }
 
+  function handleOnClickArrowLeft(){
+    history.push("/")
+  }
+
   return (
     <section className="product" data-testid="product">
       {productDetail.length === 0 ? (
@@ -38,34 +43,45 @@ export default function Product() {
       ) : (
         <Container>
           <div className="product__detail">
-            <div className="image__content">
-              <Image image={image} name={name} />
+            <div className="product__navigation">
+              <Button
+                className="button__icon icon--return"
+                onClick={() => handleOnClickArrowLeft()}
+              >
+                <FiArrowLeft />                
+              </Button>    
+              <div className="image__content">              
+                <Image image={image} name={name} />
+              </div>
             </div>
+            
+
+            
 
             <div className="product__content">
               <ProductName>{name}</ProductName>
 
 
-              <div className="product__details">
+              <div className="product__infos">
                 <div className="product__price">
                   <span className="supermarket__name">{prices[0].name}</span>
                   <Price atual={currency.format(prices[0].price)} />
                 </div>
 
                 <div className="product__add">
-                <Button
-                  className="product__cart"
-                  onClick={() => handleClickAddCart(_id)}
-                >
-                  Comprar
-                </Button>
-              </div>
+                  <Button
+                    className="product__cart"
+                    onClick={() => handleClickAddCart(_id)}
+                  >
+                    Comprar
+                  </Button>
+                </div>
               </div>
 
               
 
               <div className="supermarket__prices">
-                <span className="supermarket__text">Preço do produtos em outros supermercados:</span>                      
+                <span className="supermarket__text">Preço do produto em outros supermercados:</span>                      
                 { prices
                   .filter((price) => price._id !== prices[0]._id)
                   .map((price) => (

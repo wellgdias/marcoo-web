@@ -45,8 +45,7 @@ export default function Modal() {
           <div className="modal__filter">
             <input
               type="text"              
-              className="modal__input"                
-              minlength="8" 
+              className="modal__input"  
               maxLength="8"
               pattern="[0-9]+$"
               onKeyPress={onlynumber}

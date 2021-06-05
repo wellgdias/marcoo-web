@@ -13,8 +13,7 @@ import "./style.css";
 
 export default function App() {
   const { drawer, cep } = useSelector((state) => state);
-  const dispatch = useDispatch(); 
-  console.log(cep);
+  const dispatch = useDispatch();   
 
   useEffect(() => {
     if (cep) {
