@@ -43,13 +43,18 @@ export default function SlideDrawer() {
           {drawer.receiver === "cart" ? (
             <>
               <DrawerCart />
-              <footer className="drawer__footer">
-              <Button
-                  className="cart__checkout"
-                  onClick={() => "handleClickAddCart(_id)"}
-                >
-                  FINALIZAR COMPRA
-                </Button>
+
+              <div className="drawer__checkout">
+                {cart.amount > 0 && 
+                  <Button
+                    className="cart__checkout"
+                    onClick={() => "handleClickAddCart(_id)"}
+                  >
+                    FINALIZAR COMPRA
+                  </Button>
+                }
+              </div>
+              <footer className="drawer__footer">              
                 <span className="footer__total">Total: {currency.format(cart.total)}</span>                
               </footer>
             </>

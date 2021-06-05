@@ -23,10 +23,10 @@ export const loadCatalog = (cep) => async (dispatch) => {
       type: LOAD_CATALOG_SUCCESS,
       data: response.data.data,      
     })
-  } catch (error) {
+  } catch (error) {    
     dispatch({
       type: LOAD_CATALOG_ERROR,
-      error: error.message || 'Unexpected Error!!!',
+      error: error.response.status,
     })
   } 
 };

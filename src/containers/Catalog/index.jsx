@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import Spinner  from 'react-spinner-material';
-import { FiRotateCw } from "react-icons/fi";
+import { FiRotateCw, FiFrown, FiMap } from "react-icons/fi";
 
 import Product from "../ProductCatalog";
 import Container from "../../components/Container";
@@ -18,7 +18,7 @@ export default function Catalog() {
   const { catalog } = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();
-  const { products, loading, error } = catalog;
+  const { products, loading, error } = catalog; 
 
 
   function handleRefreshOnClick() {
@@ -47,14 +47,45 @@ export default function Catalog() {
         </Container>
       ) : (
         <Container >
-          <div className="catalog__info">     
-            <Button 
-              className="button__icon icon--error"               
-              onClick={() => handleRefreshOnClick()}
-            >
-              <FiRotateCw />
-            </Button>  
-            <span className="info__text">Ops... tivemos um erro ao carregar os produtos, tente novamente...</span>
+          <div className="catalog__info">    
+             
+            { error === 400 
+              ? (
+                <>
+                  <Button 
+                    className="button__icon icon--error"               
+                    onClick={() => handleRefreshOnClick()}
+                  >
+                    <FiFrown />
+                  </Button> 
+                  <span className="info__text">Infelizmente este endereço está fora da nossa área da cobertuta</span>                              
+                </>
+                )
+              : error === 404
+                ? (
+                  <>
+                    <Button 
+                      className="button__icon icon--error"               
+                      onClick={() => handleRefreshOnClick()}
+                    >
+                      <FiMap />
+                    </Button> 
+                    <span className="info__text">Ops... o CEP informado não foi encontrado</span>                    
+                  </>
+                  )
+                : (
+                  <>
+                    <Button 
+                      className="button__icon icon--error"               
+                      onClick={() => handleRefreshOnClick()}
+                    >
+                      <FiRotateCw />
+                    </Button> 
+                    <span className="info__text">Ops... tivemos um erro ao carregar os produtos, tente novamente...</span>
+                  </>
+                  )
+            }
+            
           </div>
         </Container>
       )}   

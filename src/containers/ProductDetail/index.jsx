@@ -54,14 +54,9 @@ export default function Product() {
                 <Image image={image} name={name} />
               </div>
             </div>
-            
-
-            
 
             <div className="product__content">
               <ProductName>{name}</ProductName>
-
-
               <div className="product__infos">
                 <div className="product__price">
                   <span className="supermarket__name">{prices[0].name}</span>
