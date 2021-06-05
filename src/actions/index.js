@@ -10,6 +10,7 @@ import {
   DELETE_PRODUCT_CART,
   SET_CEP_VALUE,
   SET_MODAL_VALUE,
+  DELETE_CART_VALUE
 } from '../constants';
 
 import api from '../services';
@@ -86,3 +87,12 @@ export const setModalValue = () => {
     type: SET_MODAL_VALUE    
   };
 };
+
+
+export const deleteCartValue = () => {
+  return {
+    type: DELETE_CART_VALUE    
+  };
+};
+
+

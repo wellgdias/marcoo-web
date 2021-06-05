@@ -1,12 +1,12 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { FiSearch, FiShoppingCart } from "react-icons/fi";
+import { FiSearch, FiShoppingCart, FiMapPin } from "react-icons/fi";
 
 import Button from "../../components/Button";
 import { ReactComponent as LogoSvg } from "../../assets/logo.svg";
 
-import { setOpenDrawer } from "../../actions";
+import { setOpenDrawer, setModalValue, setCepValue, deleteCartValue } from "../../actions";
 
 import "./style.css";
 
@@ -23,6 +23,13 @@ export default function Topbar() {
     history.push("/");
   }
 
+  function handleOnClickSetAddress() {
+    dispatch(setModalValue())
+    dispatch(setCepValue());
+    dispatch(deleteCartValue());
+    history.push("/")
+  } 
+
   return (
     <header className="topbar">
       <div className="container">
@@ -32,7 +39,13 @@ export default function Topbar() {
             <div className="logo__name">Marcoo</div>
           </div>
 
-          <div className="topbar__menu">
+          <div className="topbar__menu">            
+            <Button
+              className="button__icon icon--search"
+              onClick={() => handleOnClickSetAddress()}
+            >
+              <FiMapPin />
+            </Button> 
             <Button
               className="button__icon icon--search"
               onClick={() => handleOnClickOpenDrawer("filter")}

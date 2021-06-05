@@ -10,6 +10,7 @@ import {
   DELETE_PRODUCT_CART,
   SET_CEP_VALUE,
   SET_MODAL_VALUE,
+  DELETE_CART_VALUE
 } from "../constants";
 
 import { sumCartField } from "../utils";
@@ -43,7 +44,7 @@ export function Reducer(state = initialState, action) {
         catalog: {
           loading: true, 
           modal: false,                      
-        },
+        },       
       };
     }
     case LOAD_CATALOG_SUCCESS: {
@@ -53,7 +54,7 @@ export function Reducer(state = initialState, action) {
           products: action.data,
           loading: false, 
           modal: false,          
-        },
+        }
       };
     }
     case LOAD_CATALOG_ERROR: {
@@ -64,6 +65,7 @@ export function Reducer(state = initialState, action) {
           modal: false, 
           error: action.error,
         },
+        cep: null,
       };
     }
     case SET_PRODUCT_INFO: {
@@ -205,6 +207,18 @@ export function Reducer(state = initialState, action) {
         },        
       };
     }
+
+    case DELETE_CART_VALUE: {
+      return {
+        ...state,
+        cart: {
+          products: [],
+          amount: 0,
+          total: 0,
+        },      
+      };
+    }
+    
 
     default: {
       return state;

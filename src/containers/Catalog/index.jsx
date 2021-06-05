@@ -46,11 +46,10 @@ export default function Catalog() {
           </div>
         </Container>
       ) : (
-        <Container >
-          <div className="catalog__info">    
-             
+        <Container > 
+          <div className="catalog__info"> 
             { error === 400 
-              ? (
+              ? (                
                 <>
                   <Button 
                     className="button__icon icon--error"               
@@ -84,9 +83,8 @@ export default function Catalog() {
                     <span className="info__text">Ops... tivemos um erro ao carregar os produtos, tente novamente...</span>
                   </>
                   )
-            }
-            
-          </div>
+            }            
+          </div>         
         </Container>
       )}   
     </section>     
