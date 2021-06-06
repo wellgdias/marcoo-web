@@ -27,7 +27,7 @@ export const loadCatalog = (cep) => async (dispatch) => {
   } catch (error) {    
     dispatch({
       type: LOAD_CATALOG_ERROR,
-      error: error.response.status,
+      error: error?.response?.status || 502,
     })
   } 
 };

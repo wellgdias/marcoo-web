@@ -41,7 +41,7 @@ export default function Modal() {
           <div className="image__modal">
             <Image image={mapImage} />         
           </div>    
-          <span className="modal__text">Por favor digite o seu CEP</span>
+          <span className="modal__text">Por favor digite o CEP do seu endereço</span>
           <div className="modal__filter">
             <input
               type="text"              

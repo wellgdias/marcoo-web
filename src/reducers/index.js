@@ -94,11 +94,16 @@ export function Reducer(state = initialState, action) {
       });
 
       if (hasProduct.length === 0) {
+        const bestPrice = state.productDetail.prices.filter((price) => price.price === state.productDetail.prices[0].price)
+        const bestPriceProduct = {
+          ...state.productDetail,
+          prices: bestPrice,
+        }
         const product = {
           _id: action._id,
-          info: state.productDetail,          
+          info: bestPriceProduct,          
           total: parseFloat(
-            state.productDetail.prices[0].price
+            bestPrice
           ),
           amount: 1,
         };

@@ -70,10 +70,10 @@ export default function ProductFilter(props) {
       </div>
 
       <div className="drawer__price">   
-      <span className="price__atual">{currency.format(prices[0].price)}</span>
-      {props.product.info && (  
-        <span className="supermarket__name">{prices[0].name}</span> 
-      )}       
+        <span className="price__atual">{currency.format(prices[0].price)}</span>
+        {props.product.info && (  
+          <span className="supermarket__name">{prices[0].name}</span> 
+        )}       
       </div>
     </div>
   );
