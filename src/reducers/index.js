@@ -238,16 +238,16 @@ export function Reducer(state = initialState, action) {
         ...state,
         checkout: {
           loading: true,                        
-        },       
+        },
       };
     }
     case LOAD_CHECKOUT_SUCCESS: {
       return {
         ...state,
         checkout: {
-          supermarkets: action.data,
+          supermarkets: action.data.supermarkets,
           loading: false,        
-        }
+        },
       };
     }
     case LOAD_CHECKOUT_ERROR: {

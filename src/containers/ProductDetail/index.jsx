@@ -15,7 +15,6 @@ import { currency } from "../../utils"
 import "./style.css";
 
 export default function Product() {
-  
   const { productDetail } = useSelector((state) => state);
   const dispatch = useDispatch();
   const history = useHistory();

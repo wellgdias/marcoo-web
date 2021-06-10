@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { FiX } from "react-icons/fi";
 
 import Button from "../../components/Button";
@@ -21,7 +22,8 @@ export default function SlideDrawer() {
   }
 
   function handleOnClickCheckout(cep, cart) {
-    dispatch(loadCheckout(cep, cart));    
+    dispatch(loadCheckout(cep, cart));
+    dispatch(setOpenDrawer());
   }
 
   const drawerClasses = drawer.open ? "drawer is-open" : "drawer";
@@ -50,12 +52,11 @@ export default function SlideDrawer() {
 
               <div className="drawer__checkout">
                 {cart.amount > 0 && 
-                  <Button
-                    className="cart__checkout"
-                    onClick={() => handleOnClickCheckout(cep, cart)}
-                  >
-                    FINALIZAR COMPRA
-                  </Button>
+                  <Link to={'/checkout'} onClick={() => handleOnClickCheckout(cep, cart)}>
+                    <Button className="cart__checkout">
+                      FINALIZAR COMPRA
+                    </Button>
+                  </Link>
                 }
               </div>
               <footer className="drawer__footer">              
