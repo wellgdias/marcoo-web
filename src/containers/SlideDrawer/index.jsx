@@ -6,18 +6,22 @@ import Button from "../../components/Button";
 import DrawerFilter from "../DrawerFilter";
 import DrawerCart from "../DrawerCart";
 
-import { setOpenDrawer, setValueFilter } from "../../actions";
+import { setOpenDrawer, setValueFilter, loadCheckout } from "../../actions";
 import { currency } from "../../utils";
 
 import "./style.css";
 
 export default function SlideDrawer() {
-  const { cart, drawer } = useSelector((state) => state);
+  const { cart, drawer, cep } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   function handleOnClickCloseDrawer() {
     dispatch(setOpenDrawer());
     dispatch(setValueFilter(""));
+  }
+
+  function handleOnClickCheckout(cep, cart) {
+    dispatch(loadCheckout(cep, cart));    
   }
 
   const drawerClasses = drawer.open ? "drawer is-open" : "drawer";
@@ -48,7 +52,7 @@ export default function SlideDrawer() {
                 {cart.amount > 0 && 
                   <Button
                     className="cart__checkout"
-                    onClick={() => "handleClickAddCart(_id)"}
+                    onClick={() => handleOnClickCheckout(cep, cart)}
                   >
                     FINALIZAR COMPRA
                   </Button>

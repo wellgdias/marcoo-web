@@ -10,7 +10,10 @@ import {
   DELETE_PRODUCT_CART,
   SET_CEP_VALUE,
   SET_MODAL_VALUE,
-  DELETE_CART_VALUE
+  DELETE_CART_VALUE,
+  LOAD_CHECKOUT_LOADING,
+  LOAD_CHECKOUT_SUCCESS,
+  LOAD_CHECKOUT_ERROR
 } from '../constants';
 
 import api from '../services';
@@ -27,6 +30,29 @@ export const loadCatalog = (cep) => async (dispatch) => {
   } catch (error) {    
     dispatch({
       type: LOAD_CATALOG_ERROR,
+      error: error?.response?.status || 502,
+    })
+  } 
+};
+
+export const loadCheckout = (cep, cart) => async (dispatch) => {  
+  const products = cart.products.map((product) => ({    
+    idProduct: product._id,
+    amount: product.amount,
+  }));   
+
+  dispatch({ type: LOAD_CHECKOUT_LOADING });
+  try {
+    const response = await api.post(`/v1/supermarkets/${cep}/products/checkout`, { data: products  });  
+    
+    dispatch({
+      type: LOAD_CHECKOUT_SUCCESS,
+      data: response.data,      
+    })
+  } catch (error) {  
+    console.log(error.response.data);
+    dispatch({
+      type: LOAD_CHECKOUT_ERROR,
       error: error?.response?.status || 502,
     })
   } 

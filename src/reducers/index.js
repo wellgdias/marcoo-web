@@ -10,7 +10,10 @@ import {
   DELETE_PRODUCT_CART,
   SET_CEP_VALUE,
   SET_MODAL_VALUE,
-  DELETE_CART_VALUE
+  DELETE_CART_VALUE,
+  LOAD_CHECKOUT_LOADING,
+  LOAD_CHECKOUT_SUCCESS,
+  LOAD_CHECKOUT_ERROR
 } from "../constants";
 
 import { sumCartField } from "../utils";
@@ -34,6 +37,11 @@ export const initialState = {
     open: false,
   },
   cep: "",
+  checkout: {
+    supermarkets: [],
+    loading: false,
+    error: "",
+  }
 };
 
 export function Reducer(state = initialState, action) {
@@ -222,6 +230,33 @@ export function Reducer(state = initialState, action) {
           amount: 0,
           total: 0,
         },      
+      };
+    }
+
+    case LOAD_CHECKOUT_LOADING: {
+      return {
+        ...state,
+        checkout: {
+          loading: true,                        
+        },       
+      };
+    }
+    case LOAD_CHECKOUT_SUCCESS: {
+      return {
+        ...state,
+        checkout: {
+          supermarkets: action.data,
+          loading: false,        
+        }
+      };
+    }
+    case LOAD_CHECKOUT_ERROR: {
+      return {
+        ...state,
+        checkout: {
+          loading: false,          
+          error: action.error,
+        },        
       };
     }
     
