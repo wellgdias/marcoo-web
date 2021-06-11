@@ -13,12 +13,12 @@ export default function Supermarket({ supermarket }) {
 
   return (
     <div className="supermarket__checkoutinfo" data-testid="supermarket">     
-      <span className="checkout__names">{name}</span>
+      <span className="checkout__info supermarket--name">{name}</span>
       {products.map((product) => (                
-        <span className="checkout__names">{currency.format(product.total)}</span>  
+        <span className="checkout__info supermarket--price">{currency.format(product.total)}</span>  
                       
       ))}       
-      <span className="checkout__names">{currency.format(total)}</span>      
+      <span className="checkout__info supermarket--total">{currency.format(total)}</span>      
     </div>
   );
 }

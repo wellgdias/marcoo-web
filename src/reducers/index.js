@@ -244,10 +244,10 @@ export function Reducer(state = initialState, action) {
     }
     case LOAD_CHECKOUT_SUCCESS: {
       const productsName = action.data.supermarkets[0].products
-        .map((product) => product.name);
-      productsName.unshift('Produtos')      
-      productsName.push('Total')
-
+        .map((product) => ({
+          name: product.name,
+          amount: product.amount
+        }));     
 
       return {
         ...state,

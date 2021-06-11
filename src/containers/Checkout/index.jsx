@@ -43,9 +43,17 @@ export default function Checkout() {
           <Container>
             <div className="checkout__details">
               <div className="checkout__products">
+                <span className="checkout__info product--name">Produtos</span>
+                
                 { productsName.map((productName) => (
-                  <span className="checkout__names">{productName}</span>
-                ))}   
+                  <div className="checkout__info product--info">
+                    <span className="checkout__info product--amount">{productName.amount} - </span>
+                    <span className="checkout__info product--name">{productName.name}</span>
+                    
+                  </div> 
+                ))} 
+                 
+                <span className="checkout__info product--total">Total</span>
               </div>
               <div className="checkout__supermarkets">                          
                 { supermarkets.map((supermarket) => (
