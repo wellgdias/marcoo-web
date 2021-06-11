@@ -41,6 +41,9 @@ export const initialState = {
     supermarkets: [],
     loading: false,
     error: "",
+    subTotal: 0,
+    deliveryFee: 0,
+    Total: 0,
   },
   productsName: [],
 };
@@ -247,13 +250,19 @@ export function Reducer(state = initialState, action) {
         .map((product) => ({
           name: product.name,
           amount: product.amount
-        }));     
+        }));  
+      
+        const deliveryFee = state.cart.total <= 50 ? 
+          5 : (state.cart.total <= 100 ? 10 : (state.cart.total <= 150 ? 15 : 25))
 
       return {
         ...state,
         checkout: {
           supermarkets: action.data.supermarkets,
-          loading: false,        
+          loading: false,  
+          subTotal: state.cart.total,
+          deliveryFee: deliveryFee,
+          Total: state.cart.total + deliveryFee,      
         },
         productsName: productsName,
       };

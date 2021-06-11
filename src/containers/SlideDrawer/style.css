@@ -66,12 +66,13 @@
   display: flex;
   position: fixed;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 2%;
-  height: 15%;
+  padding: 1%;
+  height: 12%;
+  background-color: #fff;
 }
 
 .cart__checkout{
@@ -91,5 +92,4 @@
 
 .cart__checkout:hover {
   opacity: 0.8;
-
 }

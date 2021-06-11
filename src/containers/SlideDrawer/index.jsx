@@ -58,10 +58,11 @@ export default function SlideDrawer() {
                     </Button>
                   </Link>
                 }
+              
+                <footer className="drawer__footer">              
+                  <span className="footer__total">Total: {currency.format(cart.total)}</span>                
+                </footer>
               </div>
-              <footer className="drawer__footer">              
-                <span className="footer__total">Total: {currency.format(cart.total)}</span>                
-              </footer>
             </>
           ) : (
             <DrawerFilter />
