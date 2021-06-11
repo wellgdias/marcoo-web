@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
 
@@ -11,15 +11,17 @@ import Supermarkets from "../../containers/Supermarkets";
 import Container from "../../components/Container";
 import Button from "../../components/Button"
 
-import { loadCheckout } from "../../actions";
+import { loadCheckout, setClient, deleteCartValue } from "../../actions";
 import { currency } from "../../utils"
 
 import "./style.css";
 
 export default function Checkout() {
-  const { checkout, cart, cep, productsName } = useSelector((state) => state);
+  const { checkout, cart, cep, productsName, client } = useSelector((state) => state);
   const dispatch = useDispatch();  
-  const history = useHistory();      
+  const history = useHistory();
+  const [name, setName] = useState(false);
+  const [email, setEmail] = useState(false);
 
   const { supermarkets, loading, error, subTotal, deliveryFee, total } = checkout;
 
@@ -30,6 +32,26 @@ export default function Checkout() {
   function handleOnClickArrowLeft(){
     history.push("/")
   }
+
+  function handleNameChange(event) {
+    setName(event);
+  }
+
+  function handleEmailChange(event) {
+    setEmail(event);
+  }
+
+  function handleOnClickFinish() {
+    dispatch(setClient(name, email));
+    dispatch(deleteCartValue()); 
+  }
+
+  useEffect(() => {
+    if (client) {
+      setName(client.name);
+      setEmail(client.email);
+    }    
+  }, [client]);
   
   return (
     <section className="checkout" data-testid="checkout">
@@ -72,28 +94,55 @@ export default function Checkout() {
                   <Supermarkets key={supermarket.name} supermarket={supermarket}/>                
                 ))}  
               </div>
-            </div>
+            </div>            
             <div className="checkout__summary"> 
-                <span className="summary__info">Resumo do pedido:</span>     
-                <div className="summary">                        
-                      
-                  <span className="checkout__info product--checkout">Subtotal: { currency.format(subTotal) }</span>
-                  <span className="checkout__info product--checkout">Taxa de entrega: { currency.format(deliveryFee) }</span>
-                  <span className="checkout__info product--checkout">Total: { currency.format(total) }</span>
+              <span className="summary__info">informações do cliente:</span> 
+              <div className="client__info">                       
+              <div className="cliente__input">
+                <span className="checkout__info client--info">Nome:</span>
+                <div className="modal__filter">  
+                  <input
+                    type="text"              
+                    className="modal__input" 
+                    value={name}
+                    onChange={(event) => handleNameChange(event.target.value)} 
+                  />
+                </div>
+              </div>
+              <div className="cliente__input">
+                <span className="checkout__info client--info">Email:</span>
+                <div className="modal__filter">  
+                  <input
+                    type="text"              
+                    className="modal__input"
+                    value={email}
+                    onChange={(event) => handleEmailChange(event.target.value)}  
+                  />
+                </div>
+              </div>
+              
+              </div>
+              <span className="summary__info">Resumo do pedido:</span>     
+              <div className="summary"> 
+                <span className="checkout__info product--checkout">Subtotal: { currency.format(subTotal) }</span>
+                <span className="checkout__info product--checkout">Taxa de entrega: { currency.format(deliveryFee) }</span>
+                <span className="checkout__info product--checkout">Total: { currency.format(total) }</span>
 
-                  <div className="summary__buttons">
+                <div className="summary__buttons">
+                  <Button 
+                    className="checkout__button continue"
+                    onClick={() => handleOnClickArrowLeft()}>
+                      CONTINUAR COMPRANDO
+                  </Button>
+                  <Link to={'/payment'}>
                     <Button 
-                      className="checkout__button continue"
-                      onClick={() => handleOnClickArrowLeft()}>
-                        CONTINUAR COMPRANDO
+                      className="checkout__button finish"
+                      onClick={() => handleOnClickFinish()}>                      
+                        CONCLUIR PEDIDO
                     </Button>
-                    <Link to={'/payment'}>
-                      <Button className="checkout__button finish">
-                          CONCLUIR PEDIDO
-                      </Button>
-                    </Link>
-                  </div>                  
-                </div>   
+                  </Link>
+                </div>                  
+              </div>   
             </div>               
           </Container>)}
         </>

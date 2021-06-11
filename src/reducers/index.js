@@ -13,7 +13,9 @@ import {
   DELETE_CART_VALUE,
   LOAD_CHECKOUT_LOADING,
   LOAD_CHECKOUT_SUCCESS,
-  LOAD_CHECKOUT_ERROR
+  LOAD_CHECKOUT_ERROR, 
+  SET_CLIENT_VALUE,
+  DELETE_CLIENT_VALUE
 } from "../constants";
 
 import { sumCartField } from "../utils";
@@ -46,6 +48,11 @@ export const initialState = {
     total: 0,
   },
   productsName: [],
+  client: {
+    name: "",
+    email: "",
+    cep: ""
+  }
 };
 
 export function Reducer(state = initialState, action) {
@@ -245,6 +252,7 @@ export function Reducer(state = initialState, action) {
         },
       };
     }
+
     case LOAD_CHECKOUT_SUCCESS: {
       const productsName = action.data.supermarkets[0].products
         .map((product) => ({
@@ -267,6 +275,7 @@ export function Reducer(state = initialState, action) {
         productsName: productsName,
       };
     }
+
     case LOAD_CHECKOUT_ERROR: {
       return {
         ...state,
@@ -274,6 +283,28 @@ export function Reducer(state = initialState, action) {
           loading: false,          
           error: action.error,
         },        
+      };
+    }
+
+    case SET_CLIENT_VALUE: {
+      return {
+        ...state,
+        client: {
+          name: action.name,
+          email: action.email,
+          cep: state.cep,
+        }      
+      };
+    }
+
+    case DELETE_CLIENT_VALUE: {
+      return {
+        ...state,
+        client: {
+          name: "",
+          email: "",
+          cep: ""
+        }     
       };
     }
     

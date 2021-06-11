@@ -7,6 +7,7 @@ import Image from "../../components/Image";
 import Button from "../../components/Button"
 
 import { setCepValue } from "../../actions";
+import {  onlynumber } from "../../utils"
 
 import mapImage from "../../assets/mapImage.png"
 
@@ -15,17 +16,6 @@ import "./style.css";
 export default function Modal() {
   const [cep, setCep] = useState(false);
   const dispatch = useDispatch();
-
-  function onlynumber(event) {
-    const theEvent = event || window.event;
-    let key = theEvent.keyCode || theEvent.which;
-    key = String.fromCharCode( key );   
-    const regex = /^[0-9]+$/;
-    if( !regex.test(key) ) {
-       theEvent.returnValue = false;
-       if(theEvent.preventDefault) theEvent.preventDefault();
-    }
- }
 
  function handleCepChange(value){
    setCep(value)

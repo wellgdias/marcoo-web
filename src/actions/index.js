@@ -13,7 +13,9 @@ import {
   DELETE_CART_VALUE,
   LOAD_CHECKOUT_LOADING,
   LOAD_CHECKOUT_SUCCESS,
-  LOAD_CHECKOUT_ERROR
+  LOAD_CHECKOUT_ERROR,
+  SET_CLIENT_VALUE,
+  DELETE_CLIENT_VALUE
 } from '../constants';
 
 import api from '../services';
@@ -119,5 +121,20 @@ export const deleteCartValue = () => {
     type: DELETE_CART_VALUE    
   };
 };
+
+export const setClient = (name, email) => {
+  return {
+    type: SET_CLIENT_VALUE,
+    name: name,
+    email: email,    
+  };
+};
+
+export const deleteClientValue = () => {
+  return {
+    type: DELETE_CLIENT_VALUE,      
+  };
+};
+
 
 

@@ -6,7 +6,7 @@ import { FiSearch, FiShoppingCart, FiMapPin } from "react-icons/fi";
 import Button from "../../components/Button";
 import { ReactComponent as LogoSvg } from "../../assets/logo.svg";
 
-import { setOpenDrawer, setModalValue, setCepValue, deleteCartValue } from "../../actions";
+import { setOpenDrawer, setModalValue, setCepValue, deleteCartValue, deleteClientValue } from "../../actions";
 
 import "./style.css";
 
@@ -24,9 +24,10 @@ export default function Topbar() {
   }
 
   function handleOnClickSetAddress() {
-    dispatch(setModalValue())
+    dispatch(setModalValue());
     dispatch(setCepValue());
     dispatch(deleteCartValue());
+    dispatch(deleteClientValue());
     history.push("/")
   } 
 
