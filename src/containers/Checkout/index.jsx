@@ -129,11 +129,13 @@ export default function Checkout() {
                 <span className="checkout__info product--checkout">Total: { currency.format(total) }</span>
 
                 <div className="summary__buttons">
+                  { cart.products.length !== 0 &&
                   <Button 
                     className="checkout__button continue"
                     onClick={() => handleOnClickArrowLeft()}>
                       CONTINUAR COMPRANDO
                   </Button>
+                  }
                   <Link to={'/payment'}>
                     <Button 
                       className="checkout__button finish"
