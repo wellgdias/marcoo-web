@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter  } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
 import Topbar from "../Topbar";
@@ -23,7 +23,7 @@ export default function App() {
 
   return (
     <div data-testid="app">
-      <BrowserRouter>
+      <HashRouter>
         {drawer.open && (
           <>
             <SlideDrawer />
@@ -32,7 +32,7 @@ export default function App() {
         )}
         <Topbar />
         <Routes />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
