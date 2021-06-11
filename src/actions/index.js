@@ -49,8 +49,7 @@ export const loadCheckout = (cep, cart) => async (dispatch) => {
       type: LOAD_CHECKOUT_SUCCESS,
       data: response.data,      
     })
-  } catch (error) {  
-    console.log(error.response.data);
+  } catch (error) {      
     dispatch({
       type: LOAD_CHECKOUT_ERROR,
       error: error?.response?.status || 502,

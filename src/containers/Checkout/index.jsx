@@ -5,8 +5,10 @@ import { useHistory } from "react-router-dom";
 import Spinner  from 'react-spinner-material';
 import { FiRotateCw } from "react-icons/fi";
 
-import Container from "../../components/Container";
 
+import Supermarkets from "../../containers/Supermarkets";
+
+import Container from "../../components/Container";
 import Button from "../../components/Button"
 
 import { loadCheckout } from "../../actions";
@@ -14,7 +16,7 @@ import { loadCheckout } from "../../actions";
 import "./style.css";
 
 export default function Checkout() {
-  const { checkout, cart, cep } = useSelector((state) => state);
+  const { checkout, cart, cep, productsName } = useSelector((state) => state);
   const dispatch = useDispatch();  
   const history = useHistory();      
 
@@ -39,7 +41,18 @@ export default function Checkout() {
             history.push("/")
           ) : (
           <Container>
-            <h1>{supermarkets[0].name}</h1>        
+            <div className="checkout__details">
+              <div className="checkout__products">
+                { productsName.map((productName) => (
+                  <span className="checkout__names">{productName}</span>
+                ))}   
+              </div>
+              <div className="checkout__supermarkets">                          
+                { supermarkets.map((supermarket) => (
+                  <Supermarkets key={supermarket.name} supermarket={supermarket}/>                
+                ))}  
+              </div>
+            </div>               
           </Container>)}
         </>
       ) :

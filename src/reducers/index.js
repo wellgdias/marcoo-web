@@ -41,7 +41,8 @@ export const initialState = {
     supermarkets: [],
     loading: false,
     error: "",
-  }
+  },
+  productsName: [],
 };
 
 export function Reducer(state = initialState, action) {
@@ -242,12 +243,19 @@ export function Reducer(state = initialState, action) {
       };
     }
     case LOAD_CHECKOUT_SUCCESS: {
+      const productsName = action.data.supermarkets[0].products
+        .map((product) => product.name);
+      productsName.unshift('Produtos')      
+      productsName.push('Total')
+
+
       return {
         ...state,
         checkout: {
           supermarkets: action.data.supermarkets,
           loading: false,        
         },
+        productsName: productsName,
       };
     }
     case LOAD_CHECKOUT_ERROR: {

@@ -2,3 +2,33 @@
   padding-top: 70px;
   padding-bottom: 1.6rem;
 }
+
+.checkout__details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout__supermarkets {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+
+.checkout__products{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4px;
+}
+
+.checkout__names{
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  margin: 5px 2px;
+  font-weight: 700;
+}
