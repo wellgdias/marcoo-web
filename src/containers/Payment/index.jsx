@@ -6,6 +6,7 @@ import { FiArrowLeft, FiSmile } from "react-icons/fi";
 import Image from "../../components/Image";
 import Button from "../../components/Button";
 import Container from "../../components/Container";
+import { ReactComponent as Marcoo } from "../../assets/logo.svg";
 
 import { currency } from "../../utils"
 
@@ -31,13 +32,14 @@ export default function Payment() {
               <Image image={qrCodePix} name={"QrCodePix"} />
             </div>
           </div> 
-          <span className="payment__info"> Realize um pagamento PIX de { currency.format(total) } utilizando o QrCode</span>     
+          <span className="payment__info"> Realize um pagamento PIX no valor de { currency.format(total) } utilizando o QrCode</span>     
           <span className="payment__info"> Assim que o pagamento for identificado entraremos em contato para realizar a entrega dos produtos</span>           
           
           <span className="payment__info smile"> Obrigado, quando precisar comparar preços novamente é só lembrar do Marcoo</span>    
-          <Button className="button__icon icon--return">
-            <FiSmile />                
-          </Button>       
+          <div className="payment__logo">
+            <Marcoo />     
+          </div>           
+         
         </div>
       </Container>     
     </section>

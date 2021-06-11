@@ -17,3 +17,11 @@
   font-weight: 700;
   text-align: center;
 }
+
+
+.payment__logo svg {
+  width: 45px;
+  margin: 10px;
+  fill: #0590e0;
+}
+
