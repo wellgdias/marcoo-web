@@ -1,0 +1,19 @@
+.payment {
+  padding-top: 70px;
+  padding-bottom: 1.6rem;  
+}
+
+.payment__detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment__info {
+  color: #0590e0; 
+  font-size: 18px;
+  margin: 4px 10px;
+  font-weight: 700;
+  text-align: center;
+}

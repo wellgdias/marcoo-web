@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 import Spinner  from 'react-spinner-material';
 import { FiRotateCw, FiArrowLeft } from "react-icons/fi";
@@ -21,7 +21,7 @@ export default function Checkout() {
   const dispatch = useDispatch();  
   const history = useHistory();      
 
-  const { supermarkets, loading, error, subTotal, deliveryFee, Total } = checkout;
+  const { supermarkets, loading, error, subTotal, deliveryFee, total } = checkout;
 
   function handleRefreshOnClick(){
     dispatch(loadCheckout(cep, cart));     
@@ -79,7 +79,7 @@ export default function Checkout() {
                       
                   <span className="checkout__info product--checkout">Subtotal: { currency.format(subTotal) }</span>
                   <span className="checkout__info product--checkout">Taxa de entrega: { currency.format(deliveryFee) }</span>
-                  <span className="checkout__info product--checkout">Total: { currency.format(Total) }</span>
+                  <span className="checkout__info product--checkout">Total: { currency.format(total) }</span>
 
                   <div className="summary__buttons">
                     <Button 
@@ -87,9 +87,11 @@ export default function Checkout() {
                       onClick={() => handleOnClickArrowLeft()}>
                         CONTINUAR COMPRANDO
                     </Button>
-                    <Button className="checkout__button finish">
-                        CONCLUIR PEDIDO
-                    </Button>
+                    <Link to={'/payment'}>
+                      <Button className="checkout__button finish">
+                          CONCLUIR PEDIDO
+                      </Button>
+                    </Link>
                   </div>                  
                 </div>   
             </div>               

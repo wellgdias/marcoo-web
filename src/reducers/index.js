@@ -43,7 +43,7 @@ export const initialState = {
     error: "",
     subTotal: 0,
     deliveryFee: 0,
-    Total: 0,
+    total: 0,
   },
   productsName: [],
 };
@@ -262,7 +262,7 @@ export function Reducer(state = initialState, action) {
           loading: false,  
           subTotal: state.cart.total,
           deliveryFee: deliveryFee,
-          Total: state.cart.total + deliveryFee,      
+          total: state.cart.total + deliveryFee,      
         },
         productsName: productsName,
       };
